@@ -1,0 +1,105 @@
+@mixin button-style($type) {
+     position: relative;
+     z-index: 10;
+     display: block;
+
+     @if $type == top {
+          background-color: var(--clr-dark-blue);
+          line-height: rem(28);
+          border-radius: rem(120);
+          @include button-hover(
+               var(--clr-dark-blue),
+               var(--clr-dark-blue),
+               var(--clr-blue),
+               var(--clr-blue),
+               ease-out,
+               0.3s
+          );
+     }
+
+     @if $type == middle {
+          line-height: rem(26);
+          border-radius: rem(120);
+          @include button-hover(
+               rgb(255, 111, 72),
+               rgb(240, 42, 166),
+               rgb(255, 184, 164),
+               rgb(248, 149, 210),
+               ease-in-out,
+               0.25s
+          );
+     }
+
+     @if $type == bottom {
+          line-height: rem(28);
+          border-radius: rem(120);
+          @include button-hover(
+               rgb(72, 81, 255),
+               rgb(240, 42, 166),
+               rgb(194, 161, 240),
+               rgb(247, 149, 212),
+               ease-in-out,
+               0.25s
+          );
+     }
+}
+
+@function rem($value) {
+     $remValue: ($value / 16) + rem;
+     @return $remValue;
+}
+
+@mixin text-props($size, $weight, $line-height, $color: #83869a) {
+     font-size: $size;
+     font-weight: $weight;
+     @if $line-height != 0 {
+          line-height: $line-height;
+     }
+     color: $color;
+}
+
+@mixin button-hover($gradient-bg-1, $gradient-bg-2, $gradient-bg-hover-1, $gradient-bg-hover-2, $ease, $duration) {
+     &::before {
+          content: "";
+          position: absolute;
+          -webkit-transition: opacity $duration $ease;
+          -moz-transition: opacity $duration $ease;
+          -ms-transition: opacity $duration $ease;
+          -o-transition: opacity $duration $ease;
+          transition: opacity $duration $ease;
+
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          background: linear-gradient(to bottom, $gradient-bg-1, $gradient-bg-2);
+          border-radius: rem(120);
+     }
+
+     &:hover::before {
+          opacity: 0;
+     }
+
+     &::after {
+          content: "";
+          opacity: 0;
+          position: absolute;
+          -webkit-transition: opacity $duration $ease;
+          -moz-transition: opacity $duration $ease;
+          -ms-transition: opacity $duration $ease;
+          -o-transition: opacity $duration $ease;
+          transition: opacity $duration $ease;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          background: linear-gradient(to bottom, $gradient-bg-hover-1, $gradient-bg-hover-2);
+          border-radius: rem(120);
+     }
+
+     &:hover::after {
+          opacity: 1;
+     }
+}
