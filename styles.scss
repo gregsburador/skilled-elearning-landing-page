@@ -96,7 +96,7 @@ body {
      max-width: 1440px;
 }
 
-.header__nav {
+.header__nav ul {
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex;
@@ -325,7 +325,7 @@ footer {
      background: var(--clr-dark-blue);
 }
 
-.footer__nav {
+.footer__nav ul {
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex;
@@ -413,7 +413,7 @@ footer {
           }
      }
 
-     .footer__nav {
+     .footer__nav ul {
           padding: 24px 39px;
           max-width: 1000px;
      }
@@ -534,7 +534,7 @@ footer {
           }
      }
 
-     .footer__nav {
+     .footer__nav ul {
           padding: 24px 165px;
           max-width: 1440px;
      }
